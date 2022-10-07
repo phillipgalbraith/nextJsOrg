@@ -1,0 +1,79 @@
+<html>
+    <body>
+        <div id="app"></div>
+
+        
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <!-- babel makes that JSX compile with the JS -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        
+        <!-- IMPERITIVE
+        <script type="text/javascript">
+
+            const app = document.getElementById('app');
+            const header = document.createElement('h1');
+
+            const headerContent = document.createTextNode(
+                'Plan. Facilitate. Analyze. 🚀',
+            );
+
+            header.appendChild(headerContent);
+
+            app.appendChild(header);
+
+        </script> --> 
+
+        <!-- Declarative below here . JSX includes fake HTML in JavaScript --> 
+        <script type="text/jsx"> 
+            const app = document.getElementById('app')
+           
+            //to add iteration
+            const names = ['Chutiwat', 'Seth Brogan', 'Kelvin Smith'];
+
+            // without a component ReactDOM.render(<h1>Plan. Facilitate. Analyze. Share. 🤝🏻</h1>, app)
+           
+            //Capitalize the component 
+            //The variable *title has to exist in a JavaScript expression (when in JSX)
+            function Header({title}) { 
+                console.log(title);
+                return <h1>{title}</h1>  
+            }
+
+           // without nesting ReactDOM.render(<Header />, app);  //app is the DOM element, <Header /> is the component
+
+
+           
+        function HomePage() {
+           //Adding State
+           const [facilitators, setFacilitators] = React.useState(0);
+
+           //We need an event handler to HomePage() cuz scope and whatnot
+            function handleClick() {
+              setFacilitators(facilitators+1);
+              return
+            }
+
+            return ( 
+              <div>
+                
+                {/*
+                <Header title="UX Gathering" />
+                  <ul>
+                    { names.map((name) => (
+                        <li key={name}>{name}</li>
+                    ))}
+                  </ul>
+                */}
+
+                <button onClick={handleClick} >Add a Facilitator  ({facilitators})</button> // DO NOT CALL THE FUNCTION IN THE ONCLICK, JUST GIVE THE FUNCTION NAME
+              </div>
+            )
+          }
+          
+          ReactDOM.render(<HomePage />, app);
+        </script>
+
+    </body>
+
+</html>
